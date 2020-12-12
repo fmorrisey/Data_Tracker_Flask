@@ -8,8 +8,8 @@ def test():
     return "All good!"
 
 
-@bp.route('/sample')
-def index():
+@bp.route('/sample')  # URL Route
+def index():  # Index.html
     message = "This text is coming from the 'sample.py' module, not the html file!"
     phrase = "Python is cool!"
     return render_template('sample/index.html', message=message, word=phrase)
@@ -26,11 +26,10 @@ def other_example():
 
         if error is not None:
             flash(error)
-        elif request.form['title'] == "go home":
+        elif request.form['title'] == "go home":                    # Redirect to another page
             return redirect(url_for('sample.index'))
         else:
             return render_template('sample/postform.html', page_title=page_title)
 
     else:
         return render_template('sample/postform.html', page_title="PostForm from Module Function")
-

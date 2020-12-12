@@ -19,8 +19,12 @@ def create_app():
     app.register_blueprint(sample.bp)
     # app.add_url_rule('/', endpoint='index')
 
-    @app.route('/hello')
+    """@app.route('/hello')
     def hello():
         return 'Hello, World!'
+
+    @app.route('/')
+    def index():
+        return 'index'"""
 
     return app
