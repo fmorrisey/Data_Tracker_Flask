@@ -12,10 +12,11 @@ class api:
         json_data = json.loads(response.content, object_hook=lambda d:SimpleNamespace(**d))\
             if response and response.status_code == 200 else None
         print(type(json_data))
-        return json_data
+        return json_data    #Returns a List
 
     def requests_JSONDict(apiUrl): #Handle errors gracefully
         response = requests.get(apiUrl)
-        json_data = json.loads(response.content, object_hook=lambda d:SimpleNamespace(**d))\
+        json_data = response.json() \
             if response and response.status_code == 200 else None
-        return json_data
+        print(type(json_data))
+        return json_data    #Returns a Dict
