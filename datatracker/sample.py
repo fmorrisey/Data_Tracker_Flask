@@ -1,4 +1,6 @@
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
+from platformData import platformData as pfd
+from api import api
 
 bp = Blueprint('sample', __name__)
 
@@ -30,7 +32,9 @@ def test():
 
 @bp.route('/sample')  # URL Route
 def index():  # Index.html
-    return render_template('sample/index.html', titles=publishers, num_of_games=games_released)
+    GameData = api.requests_NameSpace("https://api.dccresource.com/api/games")
+    copiesPer = pfd.copiesPer_Dict(GameData)
+    return render_template('sample/index.html', titles=publishers, copiesPer=copiesPer)
 
 
 @bp.route('/postform', methods=('GET', 'POST'))
