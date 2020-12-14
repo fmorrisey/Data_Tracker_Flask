@@ -1,33 +1,53 @@
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 from elasticsearch import Elasticsearch
-import requests as rp
+import requests
+import json as js
+from types import SimpleNamespace
+
 
 bp = Blueprint('sample', __name__)
-es = Elasticsearch('10.0.1.10', port=9200)
+es = Elasticsearch('10.0.1.10', port=9200, timeout=30, max_retries=10, retry_on_timeout=True)
 """"""
 
 json_data = dict
 
-def api_request():      #Handle errors gracefully
-    response = rp.get("https://api.dccresource.com/api/games")
-    json_data = response.json() if response and response.status_code == 200 else None
-    return json_data
-    #return jsonify({json_data})
+
+def api_request(): #Handle errors gracefully
+    response = requests.get("https://api.dccresource.com/api/games")
+    game_data = js.loads(response.content, object_hook=lambda d:SimpleNamespace(**d))\
+        if response and response.status_code == 200 else None
+    return game_data
+
 
 @bp.route('/', methods=['GET'])
 def search():
-
     return render_template('sample/search.html')
+
 
 @bp.route('/search/results', methods=['GET', 'POST'])
 def search_requests():
     search_term = request.form["input"]
-    json_data = api_request()
-    res = es.search(
+    game_data = api_request()
+    results = es.search(
+        index=game_data,
+        size=20,
+        body={
+            "query": {
+                "multi_match": {
+                    "query": search_term,
+                    "fields": [
+                        "name"
+                    ]
+                }
+            }
+        }
     )
+
+    return render_template('results.html', res=results)
 
 
 """"""""
+
 
 @bp.route('/test')
 def test():
@@ -52,7 +72,7 @@ def other_example():
 
         if error is not None:
             flash(error)
-        elif request.form['title'] == "go home":                    # Redirect to another page
+        elif request.form['title'] == "go home":  # Redirect to another page
             return redirect(url_for('sample.index'))
         else:
             return render_template('sample/postform.html', page_title=page_title)
