@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1 style="text-align: center">{% block title %} Sample Index {% endblock %}</h1>
+<h1 style="text-align: center">{% block title %} Which console is King?{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
@@ -9,27 +9,11 @@
     <div class="col-12">
         <div class="row">
             <div class="col-md-6">
-                <p>This starter code project is built around a 'sample.py' module. Its view files live in 'templates/sample'. It's recommended you build your own project module and template folder for your contributions to the project.</p>
-                <p>This page extends the "base.html" file and inserts its various "blocks" (header, title and content) into the locations laid out for those blocks.</p>
-                <p>This behaves similar to the '_Layout' feature in ASP.NET and allows you to easily keep a consistent theme across many pages and reuse elements like navbars.</p>
-                <p>It can also display variables and information that is passed in to the view from the corresponding 'index' Blueprint action from the 'sample.py' module by calling the variable with double curly braces</p>
-                <p>This following line is the 'message' variable from the index action:</p>
-                <strong>{{ message }}</strong>
-                <br>
-                <strong>{{ titles }}</strong>
-                <br>
-                <strong>{{ num_of_games }}</strong>
-                <br />
-                <p>You can even easily utilize logic in these views, similar to razor! Examine the code in 'sample/index.html' to see how this line is being generated:</p>
-                {% for letter in word %}
-                {% if letter == "o" %}
-                <span> {{ letter.capitalize() }} </span>
-                {% else %}
-                <span> {{ letter }} </span>
-                {% endif %}
-                {% endfor %}
-                <p>(Always remember to close off your ifs and your loops!)</p>
-
+                <p>Which console do you think rules all platforms?</p>
+                <p>Many joined this royal rumble, but only one came out on top!</p>
+                <p>To the right you will see a graph depicting the amount of games that was released per platform in 20XX. </p>
+                <p>Did you see that?</p>
+                <p>It might be small, but the DS packs one hell of punch when it comes to releasing games...</p>
 
                 <a href="{{ url_for('sample.other_example') }}"> Next Page </a>
             </div>
@@ -40,33 +24,113 @@
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                            labels: [{% for key in copiesPer %}, "{{key}}" {% endfor %}],
                             datasets: [{
-                                label: 'Top 10 Publishers',
-                                data: {{ num_of_games }},
+                                label: 'Top Console Publishers',
+                                data: [{% for value in copiesPer.values() %}, "{{value}}" {% endfor %}],
                                 backgroundColor: [
-                                    '#FF768B',
-                                    '#D0CF0D',
-                                    '#B52118',
-                                    '#0DC6E0',
-                                    '#921F5D',
-                                    '#D56751',
-                                    '#156E2E',
-                                    '#F09572',
-                                    '#48F36C',
-                                    '#4EC40B'
+                                    '#0D7225',
+                                    '#F10416',
+                                    '#7AE645',
+                                    '#6201CB',
+                                    '#BA3591',
+                                    '#2C2DC8',
+                                    '#98C98E',
+                                    '#0A2270',
+                                    '#D0C26C',
+                                    '#665FB0',
+                                    '#7748C8',
+                                    '#B5243A',
+                                    '#28C0EC',
+                                    '#A9B71B',
+                                    '#A4A8CF',
+                                    '#AD9ED3',
+                                    '#A0C374',
+                                    '#BD9342',
+                                    '#84431B',
+                                    '#5B22CC',
+                                    '#4BB119',
+                                    '#E7F0DB',
+                                    '#533E26',
+                                    '#382860',
+                                    '#2CE64F',
+                                    '#FA5943',
+                                    '#85FF4E',
+                                    '#3D30C3',
+                                    '#B35B04',
+                                    '#9DE783',
+                                    '#409F9E',
+                                    '#B8E851',
+                                    '#C6F6E9',
+                                    '#41BF67',
+                                    '#1B2FB4',
+                                    '#9683BD',
+                                    '#E2A583',
+                                    '#EA7B9E',
+                                    '#EBF006',
+                                    '#141B97',
+                                    '#36B3F3',
+                                    '#8FAFDB',
+                                    '#DEBDBA',
+                                    '#1E7B2D',
+                                    '#CFFDFF',
+                                    '#C3DDEA',
+                                    '#9B1821',
+                                    '#65761A',
+                                    '#28DF90',
+                                    '#C5EB23'
                                 ],
                                 borderColor: [
-                                   '#FF768B',
-                                    '#D0CF0D',
-                                    '#B52118',
-                                    '#0DC6E0',
-                                    '#921F5D',
-                                    '#D56751',
-                                    '#156E2E',
-                                    '#F09572',
-                                    '#48F36C',
-                                    '#4EC40B'
+                                    '#0D7225',
+                                    '#F10416',
+                                    '#7AE645',
+                                    '#6201CB',
+                                    '#BA3591',
+                                    '#2C2DC8',
+                                    '#98C98E',
+                                    '#0A2270',
+                                    '#D0C26C',
+                                    '#665FB0',
+                                    '#7748C8',
+                                    '#B5243A',
+                                    '#28C0EC',
+                                    '#A9B71B',
+                                    '#A4A8CF',
+                                    '#AD9ED3',
+                                    '#A0C374',
+                                    '#BD9342',
+                                    '#84431B',
+                                    '#5B22CC',
+                                    '#4BB119',
+                                    '#E7F0DB',
+                                    '#533E26',
+                                    '#382860',
+                                    '#2CE64F',
+                                    '#FA5943',
+                                    '#85FF4E',
+                                    '#3D30C3',
+                                    '#B35B04',
+                                    '#9DE783',
+                                    '#409F9E',
+                                    '#B8E851',
+                                    '#C6F6E9',
+                                    '#41BF67',
+                                    '#1B2FB4',
+                                    '#9683BD',
+                                    '#E2A583',
+                                    '#EA7B9E',
+                                    '#EBF006',
+                                    '#141B97',
+                                    '#36B3F3',
+                                    '#8FAFDB',
+                                    '#DEBDBA',
+                                    '#1E7B2D',
+                                    '#CFFDFF',
+                                    '#C3DDEA',
+                                    '#9B1821',
+                                    '#65761A',
+                                    '#28DF90',
+                                    '#C5EB23'
                                 ],
                                 borderWidth: 1
                             }]
