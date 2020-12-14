@@ -2,6 +2,26 @@ from flask import Flask, jsonify, request, redirect, flash, render_template, url
 
 bp = Blueprint('sample', __name__)
 
+games = {
+    'Electronic Arts': 1351,
+    'Activision': 975,
+    'Namco Bandai Games': 932,
+    'Ubisoft': 921,
+    'Konami Digital Entertainment': 832,
+    'THQ': 715,
+    'Nintendo': 703,
+    'Sony Computer Entertainment': 683,
+    'Sega': 639,
+    'Take-Two Interactive': 413
+}
+publishers = []
+games_released = []
+test = []
+
+for company, copies in games.items():
+    publishers.append(company)
+    games_released.append(copies)
+
 
 @bp.route('/test')
 def test():
@@ -10,9 +30,7 @@ def test():
 
 @bp.route('/sample')  # URL Route
 def index():  # Index.html
-    message = "This text is coming from the 'sample.py' module, not the html file!"
-    phrase = "Python is cool!"
-    return render_template('sample/index.html', message=message, word=phrase)
+    return render_template('sample/index.html', titles=publishers, num_of_games=games_released)
 
 
 @bp.route('/postform', methods=('GET', 'POST'))
@@ -26,7 +44,7 @@ def other_example():
 
         if error is not None:
             flash(error)
-        elif request.form['title'] == "go home":                    # Redirect to another page
+        elif request.form['title'] == "go home":  # Redirect to another page
             return redirect(url_for('sample.index'))
         else:
             return render_template('sample/postform.html', page_title=page_title)

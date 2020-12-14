@@ -15,6 +15,10 @@
                 <p>It can also display variables and information that is passed in to the view from the corresponding 'index' Blueprint action from the 'sample.py' module by calling the variable with double curly braces</p>
                 <p>This following line is the 'message' variable from the index action:</p>
                 <strong>{{ message }}</strong>
+                <br>
+                <strong>{{ titles }}</strong>
+                <br>
+                <strong>{{ num_of_games }}</strong>
                 <br />
                 <p>You can even easily utilize logic in these views, similar to razor! Examine the code in 'sample/index.html' to see how this line is being generated:</p>
                 {% for letter in word %}
@@ -36,25 +40,33 @@
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                             datasets: [{
-                                label: '# of Votes',
-                                data: [12, 19, 3, 5, 2, 3],
+                                label: 'Top 10 Publishers',
+                                data: {{ num_of_games }},
                                 backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
+                                    '#FF768B',
+                                    '#D0CF0D',
+                                    '#B52118',
+                                    '#0DC6E0',
+                                    '#921F5D',
+                                    '#D56751',
+                                    '#156E2E',
+                                    '#F09572',
+                                    '#48F36C',
+                                    '#4EC40B'
                                 ],
                                 borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
+                                   '#FF768B',
+                                    '#D0CF0D',
+                                    '#B52118',
+                                    '#0DC6E0',
+                                    '#921F5D',
+                                    '#D56751',
+                                    '#156E2E',
+                                    '#F09572',
+                                    '#48F36C',
+                                    '#4EC40B'
                                 ],
                                 borderWidth: 1
                             }]
