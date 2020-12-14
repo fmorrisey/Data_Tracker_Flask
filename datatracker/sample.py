@@ -30,8 +30,7 @@ def search_requests():
 
     game_data = api_request()
 
-    results = es.search()
-
+    results = search()
 
     return render_template('results.html', res=results)
 
