@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
-from platformData import platformData as pfd
-from api import api
+from datatracker.platformData import platformData as pfd
+from datatracker.api import api
 
 bp = Blueprint('sample', __name__)
 
