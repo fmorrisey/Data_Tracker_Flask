@@ -1,7 +1,33 @@
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
+from elasticsearch import Elasticsearch
+import requests as rp
 
 bp = Blueprint('sample', __name__)
+es = Elasticsearch('10.0.1.10', port=9200)
+""""""
 
+json_data = dict
+
+def api_request():      #Handle errors gracefully
+    response = rp.get("https://api.dccresource.com/api/games")
+    json_data = response.json() if response and response.status_code == 200 else None
+    return json_data
+    #return jsonify({json_data})
+
+@bp.route('/', methods=['GET'])
+def search():
+
+    return render_template('sample/search.html')
+
+@bp.route('/search/results', methods=['GET', 'POST'])
+def search_requests():
+    search_term = request.form["input"]
+    json_data = api_request()
+    res = es.search(
+    )
+
+
+""""""""
 
 @bp.route('/test')
 def test():
