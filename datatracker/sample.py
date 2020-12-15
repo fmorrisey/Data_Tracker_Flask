@@ -1,29 +1,22 @@
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
-from datatracker.platformData import platformData as pfd
-from datatracker.api import api
 
 
 bp = Blueprint('sample', __name__)
 
-games = {
-    'Electronic Arts': 1351,
-    'Activision': 975,
-    'Namco Bandai Games': 932,
-    'Ubisoft': 921,
-    'Konami Digital Entertainment': 832,
-    'THQ': 715,
-    'Nintendo': 703,
-    'Sony Computer Entertainment': 683,
-    'Sega': 639,
-    'Take-Two Interactive': 413
-}
-publishers = []
-games_released = []
-test = []
 
-for company, copies in games.items():
-    publishers.append(company)
-    games_released.append(copies)
+@bp.route('/', methods=['GET'])
+def search():
+    return render_template('sample/search.html')
+
+
+@bp.route('/search/results', methods=['GET', 'POST'])
+
+def search_requests():
+    search_term = request.form["input"]
+    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
+    copiesPer = pfd.copiesPer_Dict(game_Data)
+    results = search()
+    return render_template('results.html', res=results)
 
 
 @bp.route('/test')
