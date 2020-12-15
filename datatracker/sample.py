@@ -20,9 +20,9 @@ def search_requests():
     return render_template('sample/results.html', res=results, hits=hits)
 
 
-@bp.route('/test')
+@bp.route('/search/details')
 def test():
-    return "All good!"
+    return render_template('sample/details.html')
 
 
 @bp.route('/sample')  # URL Route
