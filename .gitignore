@@ -134,3 +134,4 @@ dmypy.json
 .ds_store
 
 .idea/misc.xml
+node_modules

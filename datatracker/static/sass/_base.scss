@@ -1,0 +1,43 @@
+:root {
+    --color-primary: #ffff00;
+    --color-primary-light: #ffff4d;
+    --color-primary-dark: #ccb800;
+
+    --color-black: black;
+    --color-white: white;
+
+    --color-secondary: #707070;
+    --color-secondary-light: #cac4c4;
+    --color-secondary-dark: #333333;
+}
+
+$bp-tabport: 600px;
+$bp-tabland: 900px;
+$bp-laptop: 1200px;
+$bp-desktop: 1800px;
+
+
+*{
+    margin:0;
+    padding:0;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;    
+}
+//Best friend for margin control: forces margin + padding + content to fit declared pixel value
+html{
+    box-sizing: border-box; 
+    font-size: 62.5%; // 1 rem = 10 pixels - 62.5% x 16px = 10px
+}
+
+body{
+    font-family:'Open Sans',sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-secondary-dark);
+    background-image: url(../assets/pacground.png);
+}
+
+
+
