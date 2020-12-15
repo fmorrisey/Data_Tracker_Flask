@@ -35,7 +35,8 @@ def test():
 def index():  # Index.html
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     copiesPer = pfd.copiesPer_Dict(game_Data)
-    return render_template('sample/index.html', titles=publishers, copiesPer=copiesPer)
+    nintedoGames = pfd.NintendoAfter(game_Data, 2016)
+    return render_template('sample/index.html', titles=publishers, copiesPer=copiesPer, nintedoGames=nintedoGames)
 
 @bp.route('/postform', methods=('GET', 'POST'))
 def other_example():

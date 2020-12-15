@@ -25,8 +25,9 @@ class platformData(object):
         platform_names, platform_titles_count = platformData._zip_Platforms(topPlatforms)
         return platform_names, platform_titles_count  # Return Lists
 
-    def NintendoAfter(gameData, year):
-        NintendoGames = platformData._groupManufactures(gameData, year)
+    def NintendoAfter(game_Data, year):
+        NintendoGames = platformData._groupManufactures(game_Data, year)
+        return NintendoGames
 
     # Counts the number of publishers    
     def _titlesPer(json_data):
