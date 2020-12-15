@@ -31,7 +31,7 @@
     </form>
 
   <center>
-      <h1>Results: ({{ hits }}) </h1>
+      <h5>Results: ({{ hits }}) </h5>
   </center>
 
   <table class="table">
@@ -48,11 +48,7 @@
     <tbody>
       <tr>
         <th scope="row"></th>
-
-
-          <td><a href="{{action.item[game._id]}}">{{ game.name }}</a></td>
-          <td><a >{{ game.name }}</a></td>
-
+          <td><a href="{{ url_for('.details', game_id=game._id) }}">{{game.name}}</a></td>
       </tr>
     </tbody>
 {% endfor %}

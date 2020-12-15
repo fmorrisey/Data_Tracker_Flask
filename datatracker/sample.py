@@ -1,7 +1,9 @@
-from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
+from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint, session
 from datatracker.platformData import platformData as pfd
 from datatracker.api import api
 from datatracker.search import search as srch
+import json
+
 
 bp = Blueprint('sample', __name__)
 
@@ -18,14 +20,18 @@ def search_requests():
     search_term = request.form["input"]
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     results, hits = srch.searchByName(game_Data, search_term)
-
-    idTOSearch = request.form[game._id]
+    #userResults = json.dumps(results)
+    #session['userResults'] = userResults
     return render_template('sample/results.html', res=results, hits=hits)
 
 
-@bp.route('/test')
-def test():
-    return "All good!"
+@bp.route('/search/details/<game_id>', methods=['GET'])
+def details(game_id):
+    #userResults = session.get('userResults', None)
+    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
+    gameInfo = srch.searchByID(game_Data, game_id)
+
+    return render_template('sample/details.html', gameInfo=gameInfo)
 
 
 @bp.route('/sample')  # URL Route

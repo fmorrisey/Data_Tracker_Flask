@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="text-align: center">{% block title %} {{ page_title }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<p>Why doesn't this line show up in the view?</p>
+
+
+ <h1>Game Details will go below....</h1>
+    <p> {% for game in gameInfo %}
+        {{game.name}}
+        {{game.publisher}}
+        {{game.naSales}}</p>
+        {% endfor %}
+
+{% endblock %}
+
+
