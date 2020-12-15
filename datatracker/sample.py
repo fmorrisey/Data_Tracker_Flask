@@ -17,7 +17,7 @@ def search_requests():
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     results, hits = srch.searchByName(game_Data, search_term)
 
-    return render_template('sample/results.html', res=results, hits=hits )
+    return render_template('sample/results.html', res=results, hits=hits)
 
 
 @bp.route('/test')
