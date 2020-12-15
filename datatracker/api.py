@@ -22,3 +22,11 @@ class api:
             if response and response.status_code == 200 else None
         print(type(json_data))
         return json_data  # Returns a Dict
+
+    def requests_byid(apiUrl):  # Handle errors gracefully
+        response = requests.get(apiUrl)
+        json_data = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d)) \
+            if response and response.status_code == 200 else None
+        print(type(json_data))
+        return json_data  # Returns a List
+

@@ -5,6 +5,8 @@ from datatracker.search import search as srch
 
 bp = Blueprint('sample', __name__)
 
+results = []
+
 
 @bp.route('/search', methods=['GET'])
 def search():
@@ -17,7 +19,8 @@ def search_requests():
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     results, hits = srch.searchByName(game_Data, search_term)
 
-    return render_template('sample/results.html', res=results, hits=hits )
+    idTOSearch = request.form[game._id]
+    return render_template('sample/results.html', res=results, hits=hits)
 
 
 @bp.route('/test')
@@ -32,6 +35,12 @@ def index():  # Index.html
     copiesPer = pfd.copiesPer_Dict(game_Data)
 
     return render_template('sample/index.html', copiesPer=copiesPer)
+
+@bp.route('/sample/<int:post_id>')
+def show_post(post_id):
+    # show the post with the given id, the id is an integer
+    return 'Post %d' % post_id
+
 
 @bp.route('/postform', methods=('GET', 'POST'))
 def other_example():

@@ -31,26 +31,27 @@
     </form>
 
   <center>
-      <h1>Results: ({{ res['hits']['hits'] }}) </h1>
+      <h1>Results: ({{ hits }}) </h1>
   </center>
 
   <table class="table">
     <thead>
       <tr>
         <th>Date Stamp</th>
-        <th>Source</th>
         <th>Title</th>
+        <th>Publish Date</th>
         <th>Tags</th>
       </tr>
     </thead>
 
-{% for hit in res['hits']['hits'] %}
+{% for game in res %}
     <tbody>
       <tr>
         <th scope="row"></th>
 
-          <!--<td><a href="{{ hit['_source']['url'] }}">{{ hit['_source']['results.name'] }}</a></td>-->
-          <td><a>{{ hit[]['results.name'] }}</a></td>
+
+          <td><a href="{{action.item[game._id]}}">{{ game.name }}</a></td>
+          <td><a >{{ game.name }}</a></td>
 
       </tr>
     </tbody>
