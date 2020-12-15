@@ -1,23 +1,23 @@
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 from datatracker.platformData import platformData as pfd
 from datatracker.api import api
+from datatracker.search import search as srch
 
 bp = Blueprint('sample', __name__)
 
 
-@bp.route('/', methods=['GET'])
+@bp.route('/search', methods=['GET'])
 def search():
     return render_template('sample/search.html')
 
 
 @bp.route('/search/results', methods=['GET', 'POST'])
-
 def search_requests():
     search_term = request.form["input"]
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
-    copiesPer = pfd.copiesPer_Dict(game_Data)
-    results = search()
-    return render_template('results.html', res=results)
+    results, hits = srch.searchByName(game_Data, search_term)
+
+    return render_template('sample/results.html', res=results, hits=hits )
 
 
 @bp.route('/test')
@@ -27,10 +27,11 @@ def test():
 
 @bp.route('/sample')  # URL Route
 def index():  # Index.html
+
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     copiesPer = pfd.copiesPer_Dict(game_Data)
-    nintedoGames = pfd.NintendoAfter(game_Data, 2016)
-    return render_template('sample/index.html', titles=publishers, copiesPer=copiesPer, nintedoGames=nintedoGames)
+
+    return render_template('sample/index.html', copiesPer=copiesPer)
 
 @bp.route('/postform', methods=('GET', 'POST'))
 def other_example():
