@@ -31,7 +31,7 @@
     </form>
 
   <center>
-      <h1>Results: ({{ res['hits']['total'] }}) </h1>
+      <h1>Results: ({{ res['hits']['hits'] }}) </h1>
   </center>
 
   <table class="table">
@@ -47,10 +47,11 @@
 {% for hit in res['hits']['hits'] %}
     <tbody>
       <tr>
-        <th scope="row">{{ hit['_source']['date'] }}</th>
-          <td>{{ hit['_index'] }}</td>
-          <td><a href="{{ hit['_source']['url'] }}">{{ hit['_source']['title'] }}</a></td>
-          <td>{{ hit['_source']['tags'] }}</td>
+        <th scope="row"></th>
+
+          <!--<td><a href="{{ hit['_source']['url'] }}">{{ hit['_source']['results.name'] }}</a></td>-->
+          <td><a>{{ hit[]['results.name'] }}</a></td>
+
       </tr>
     </tbody>
 {% endfor %}

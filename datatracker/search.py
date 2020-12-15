@@ -16,4 +16,14 @@ class search:
                 results.append(game)
         
         return results, len(results)
-    
+
+    def searchByID(results, game_ID): #search work
+        idvResults = []
+
+        for game in results:
+            if game._id == game_ID:
+                idvResults.append(game)
+            else:
+                pass
+
+        return idvResults
