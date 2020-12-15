@@ -2,26 +2,32 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}{% endblock title %}</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-        
-    
-        
+        <link rel="stylesheet" href="../static/css/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+            crossorigin="anonymous"></script>
     </head>
     <body>
-        <header>
-            {% block header %}{% endblock %}
+        <header class="header">
+            {% block header %}{% endblock header  %}
         </header>
-        <main>
-            {% block content %}{% endblock %}
+        <main>           
+            <div class="card">
+                <div class="chart-container">
+                    {% block chart%}{% endblock chart %}
+                </div>
+                <div class="search">
+
+                </div>
+                {% block content %}{% endblock content %}
+            </div>
         </main> 
         <footer>
-            
+
         </footer>      
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
-        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
-        crossorigin="anonymous"></script>
+    
     </body>
 
 </html>
