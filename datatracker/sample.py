@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
-from datatracker.platformData import platformData as pfd
-from datatracker.api import api
-=======
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint, session
 from datatracker.platformData import platformData as pfd
 from datatracker.api import api
 from datatracker.search import search as srch
 import json
 
->>>>>>> cc5925cf9d6e288423b72212e1569bc82094113a
+
 
 bp = Blueprint('sample', __name__)
 
@@ -28,7 +23,7 @@ def search_requests():
     results, hits = srch.searchByName(game_Data, search_term)
     #userResults = json.dumps(results)
     #session['userResults'] = userResults
-    return render_template('sample/results.html', res=results, hits=hits, num=1)
+    return render_template('sample/results.html', res=results, hits=hits)
 
 
 @bp.route('/search/details/<game_id>', methods=['GET'])

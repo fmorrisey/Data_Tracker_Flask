@@ -1,0 +1,24 @@
+.chart-container{
+    width: 70rem;
+    height: 70rem;
+    background: white;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: -50rem;
+
+}
+
+svg{
+    
+   enable-background: new 0 0 512 512;
+    fill: #ffff4d;
+    position: absolute;
+    width: 125%;
+    /* font-size: 86rem; */
+    height: auto;
+    top: -15%;
+    left: -5rem;
+    filter: drop-shadow(2px 4px 6px black);
+}

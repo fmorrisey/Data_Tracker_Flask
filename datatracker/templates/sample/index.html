@@ -2,7 +2,7 @@
 
 {% block header %}
 <h1 style="text-align: center">{% block title %} Which console is King?{% endblock %}</h1>
-{% endblock %}
+{% endblock header %}
 
 {% block content %}
 <div class="container">
@@ -17,6 +17,12 @@
 
                 <a href="{{ url_for('sample.search') }}"> Search for Games </a>
             </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block chart %}
             <div class="col-md-6">
                 <canvas id="myChart" width="400" height="400"></canvas>
                     <script>
@@ -147,9 +153,8 @@
                     });
                     </script>
             </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
+{% endblock chart %}
+
+
 
 
