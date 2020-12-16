@@ -16,16 +16,6 @@ class platformData(object):
         topPlatforms = platformData._top_Platforms(platforms, numberOfPlatforms)  # Sorts the data by top platform descending order
         return topPlatforms  # Returns Dict
 
-    def copiesPer_Lists(game_data):  # Calls multiple functions to return two serpate lists of copies per console
-        numberOfPlatforms = platformData._findUniquePlatforms(game_data, 2013, 2021)
-        platforms = platformData._titlesPer(game_data)
-        topPlatforms = platformData._top_Platforms(platforms, numberOfPlatforms)  # Sorts the data by top platform descending order
-        platform_names, platform_titles_count = platformData._zip_Platforms(topPlatforms)
-        return platform_titles_count, platform_names  # Return Lists
-
-    def NintendoAfter(game_Data, year):
-        NintendoGames = platformData._groupManufactures(game_Data, year)
-        return NintendoGames
 
     # Counts the number of publishers    
     def _titlesPer(json_data):
@@ -55,10 +45,4 @@ class platformData(object):
         top_platforms = set((""))
         top_platforms = dict(ct(platforms).most_common(top))
         return top_platforms
-
-    def _zip_Platforms(platforms):
-        names, titles = zip(*platforms.items())
-        print(names)
-        print(titles)
-        return names, titles
 

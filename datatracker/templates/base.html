@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <!--GOOGELY FONTS-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+
     <!--NOT SURE WHAT THIS DOES???-->
     <link rel="icon" href="/file-earmark-bar-graph-fill.svg" type="image/svg+xml">
 
@@ -20,38 +21,41 @@
             crossorigin="anonymous"></script>
     </head>
     <header class="header">
+        <nav class="navbar">
+            <div class="container d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar nav-buttons">
+            {#{COULD SERIOUSLY USE SOME NAV BUTTON BRH}#}
+                <li>
+                    <div class="nav-button">
+                        <button><a href="{{ url_for('sample.home') }}">Home</a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-button">
+                        <button> <a href="{{ url_for('sample.search') }}" >Copies Sold</a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-button">
+                        <button><a href="{{ url_for('sample.sales') }}">Global Sales</a></button>
+                    </div>
+                </li>
+                <li>
+                    <div class="nav-button">
+                        <button><a href="{{ url_for('sample.index') }}" >Copies Sold</a></button>
+                    </div>
+                </li>
+                           <li>
+                    <div class="nav-button">
+                        <button><a href="{{ url_for('sample.analysis') }}" >Analysis</a></button>
+                    </div>
+                </li>
+
+            </ul>
+
+            </div>
+        </nav>
         {% block header %}{% endblock header  %}
-        <ul class="nav nav-buttons">
-
-            <li>
-                <div class="nav-button">
-                    <button>Home</button>
-                </div>
-            </li>
-            <li>
-                <div class="nav-button">
-                    <button>Home</button>
-                </div>
-            </li>
-            <li>
-                <div class="nav-button">
-                    <button >Home</button>
-                </div>
-            </li>
-            <li>
-                <div class="nav-button">
-                    <button >Home</button>
-                </div>
-            </li>
-            <li>
-                <div class="nav-button">
-                    <button >Home</button>
-                </div>
-            </li>
-
-
-        </ul>
-
 
     </header>
 
