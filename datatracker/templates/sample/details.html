@@ -13,26 +13,27 @@
         <script>
         {% for game in gameInfo %}
         var ctx = document.getElementById('myChart').getContext('2d');
+        Chart.defaults.global.defaultFontColor = 'black';
         var myChart = new Chart(ctx, {
-            type: 'doughnut',
+            type: 'polarArea',
             data: {
                 labels: ['North American Sales', 'European Sales', 'Japan Sales', 'Other Sales',],
                 datasets: [{
                     label: 'Top Console Publishers',
                     data: [{{ game.naSales }}, {{ game.euSales }}, {{ game.jpSales}}, {{ game.otherSales }}],
                     backgroundColor: [
-                      '#247ba0',
-                      '#70c1b3',
-                      '#b2dbbf',
-                      '#f3ffbd',
-                      '#ff1654'
+                      '#e9c46a',
+                      '#2a9d8f',
+                      '#264653',
+                      '#f4a261',
+                      '#e76f51'
                     ],
                     borderColor: [
-                      '#247ba0',
-                      '#70c1b3',
-                      '#b2dbbf',
-                      '#f3ffbd',
-                      '#ff1654'
+                      '#e9c46a',
+                      '#2a9d8f',
+                      '#264653',
+                      '#f4a261',
+                      '#e76f51'
                     ],
                     borderWidth: 1
                 }]
@@ -41,8 +42,15 @@
                 cutoutPercentage: 20,
                  title: {
                     display: true,
-                    text: 'Sales by Region (Number represents millions)'
-                 }
+                     position: 'bottom',
+                    text: 'Sales by Region (Number represents millions)',
+                 },
+                legend: {
+                    labels: {
+                        fontColor: '#0D052D'
+                    },
+                    position: 'bottom'
+                },
             }
         });
         {% endfor %}
