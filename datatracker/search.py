@@ -23,6 +23,7 @@ class search:
         for game in results:
             if game._id == game_ID:
                 idvResults.append(game)
+                break
             else:
                 pass
 

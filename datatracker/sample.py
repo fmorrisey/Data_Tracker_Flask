@@ -33,11 +33,13 @@ def details(game_id):
 
 
 @bp.route('/sample')  # URL Route
-def copiesPer():  # Index.html
+def index():  # Index.html
 
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
+    copiesPer = pfd.copiesPer_Dict(game_Data)
+    return render_template('/sample/index.html', copiesPer=copiesPer)
 
-    return render_template('/sample/index.html')
+
 
 @bp.route('/')  # URL Route
 def home():  # Index.html
