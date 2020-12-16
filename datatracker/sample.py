@@ -40,8 +40,8 @@ def index():  # Index.html
     copiesPer = pfd.copiesPer_Dict(game_Data)
     return render_template('/sample/index.html', copiesPer=copiesPer)
 
-@bp.route('/sales')  # URL Route
-def index():  # Index.html
+@bp.route('/sample/sales')  # URL Route
+def sales():  # Index.html
 
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     salesPer = sds.salesPer_Global(game_Data, 2013, 2020)
