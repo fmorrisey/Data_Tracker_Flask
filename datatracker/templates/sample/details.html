@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="text-align: center">{% block title %} {{ page_title }} {% endblock %}</h1>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-md-6">
+                {% for game in gameInfo %}
+            <h1>{{game.name}}</h1>
+            <div>
+                <h5><b>Year:</b> {{game.year}}</h5>
+                <h5><b>Publisher:</b> {{game.publisher}}</h5>
+                <h5><b>Platform:</b> {{game.platform}}</h5>
+                <h5><b>Genre:</b> {{game.genre}}</h5>
+            </div>
+                <a href="{{ url_for('sample.search') }}"> Back to 'Game Search' </a>
+            </div>
+            <div class="col-md-6">
+                <canvas id="myChart" width="400" height="400"></canvas>
+                    <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['North American Sales', 'European Sales', 'Japan Sales', 'Other Sales', 'Global Sales' ],
+                            datasets: [{
+                                label: 'Top Console Publishers',
+                                data: [{{ game.naSales }}, {{ game.euSales }}, {{ game.jpSales}}, {{ game.otherSales }}, {{ game.globalSales }}],
+                                backgroundColor: [
+                                  '#247ba0',
+                                  '#70c1b3',
+                                  '#b2dbbf',
+                                  '#f3ffbd',
+                                  '#ff1654'
+                                ],
+                                borderColor: [
+                                  '#247ba0',
+                                  '#70c1b3',
+                                  '#b2dbbf',
+                                  '#f3ffbd',
+                                  '#ff1654'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            cutoutPercentage: 20,
+                             title: {
+                                display: true,
+                                text: 'Sales by Region (Number represents millions)'
+                             }
+                        }
+                    });
+                    </script>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+
+

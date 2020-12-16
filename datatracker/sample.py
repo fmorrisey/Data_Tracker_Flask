@@ -1,40 +1,57 @@
+<<<<<<< HEAD
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 from datatracker.platformData import platformData as pfd
 from datatracker.api import api
+=======
+from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint, session
+from datatracker.platformData import platformData as pfd
+from datatracker.api import api
+from datatracker.search import search as srch
+import json
+
+>>>>>>> cc5925cf9d6e288423b72212e1569bc82094113a
 
 bp = Blueprint('sample', __name__)
 
-games = {
-    'Electronic Arts': 1351,
-    'Activision': 975,
-    'Namco Bandai Games': 932,
-    'Ubisoft': 921,
-    'Konami Digital Entertainment': 832,
-    'THQ': 715,
-    'Nintendo': 703,
-    'Sony Computer Entertainment': 683,
-    'Sega': 639,
-    'Take-Two Interactive': 413
-}
-publishers = []
-games_released = []
-test = []
-
-for company, copies in games.items():
-    publishers.append(company)
-    games_released.append(copies)
+results = []
 
 
-@bp.route('/test')
-def test():
-    return "All good!"
+@bp.route('/search', methods=['GET'])
+def search():
+    return render_template('sample/search.html')
+
+
+@bp.route('/search/results', methods=['GET', 'POST'])
+def search_requests():
+    search_term = request.form["input"]
+    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
+    results, hits = srch.searchByName(game_Data, search_term)
+    #userResults = json.dumps(results)
+    #session['userResults'] = userResults
+    return render_template('sample/results.html', res=results, hits=hits, num=1)
+
+
+@bp.route('/search/details/<game_id>', methods=['GET'])
+def details(game_id):
+    #userResults = session.get('userResults', None)
+    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
+    gameInfo = srch.searchByID(game_Data, game_id)
+
+    return render_template('sample/details.html', gameInfo=gameInfo)
 
 
 @bp.route('/sample')  # URL Route
 def index():  # Index.html
-    GameData = api.requests_NameSpace("https://api.dccresource.com/api/games")
-    copiesPer = pfd.copiesPer_Dict(GameData)
-    return render_template('sample/index.html', titles=publishers, copiesPer=copiesPer)
+
+    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
+    copiesPer = pfd.copiesPer_Dict(game_Data)
+
+    return render_template('sample/index.html', copiesPer=copiesPer)
+
+@bp.route('/sample/<int:post_id>')
+def show_post(post_id):
+    # show the post with the given id, the id is an integer
+    return 'Post %d' % post_id
 
 
 @bp.route('/postform', methods=('GET', 'POST'))
