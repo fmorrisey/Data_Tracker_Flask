@@ -15,7 +15,7 @@
                 <p>Did you see that?</p>
                 <p>It might be small, but the DS packs one hell of punch when it comes to releasing games...</p>
 
-                <a href="{{ url_for('search') }}"> Search for Games </a>
+                <a href="{{ url_for('sample.search') }}"> Search for Games </a>
             </div>
         </div>
     </div>
@@ -30,9 +30,9 @@
                     var myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: [{% for key in copiesPer %}, "{{key}}" {% endfor %}],
+                            labels: [{% for key in copiesPer.keys() %}, "{{key}}" {% endfor %}],
                             datasets: [{
-                                label: 'Top Console Publishers',
+                                label: 'Top Console Publishers since 2013',
                                 data: [{% for value in copiesPer.values() %}, "{{value}}" {% endfor %}],
                                 backgroundColor: [
                                     '#0D7225',

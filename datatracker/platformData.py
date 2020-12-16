@@ -10,18 +10,18 @@ class platformData(object):
     def __init__(self, game_data):
         self.game_data = game_data
 
-    def copiesPer_Dict(game_data):  # Calls multiple functions to return two serpate lists of copies per console
-        numberOfPlatforms = platformData._findUnique(game_data)
+    def copiesPer_Dict(game_data):  # Calls multiple functions to return one dictionary
+        numberOfPlatforms = platformData._findUniquePlatforms(game_data, 2013, 2021)
         platforms = platformData._titlesPer(game_data)
         topPlatforms = platformData._top_Platforms(platforms, numberOfPlatforms)  # Sorts the data by top platform descending order
         return topPlatforms  # Returns Dict
 
     def copiesPer_Lists(game_data):  # Calls multiple functions to return two serpate lists of copies per console
-        numberOfPlatforms = platformData._findUnique(game_data)
+        numberOfPlatforms = platformData._findUniquePlatforms(game_data, 2013, 2021)
         platforms = platformData._titlesPer(game_data)
         topPlatforms = platformData._top_Platforms(platforms, numberOfPlatforms)  # Sorts the data by top platform descending order
         platform_names, platform_titles_count = platformData._zip_Platforms(topPlatforms)
-        return platform_names, platform_titles_count  # Return Lists
+        return platform_titles_count, platform_names  # Return Lists
 
     def NintendoAfter(game_Data, year):
         NintendoGames = platformData._groupManufactures(game_Data, year)
@@ -32,13 +32,19 @@ class platformData(object):
         platforms = ct(k.platform for k in json_data if k.platform)
         return platforms
 
-    def _findUnique(json_data):
+    def _findUniquePlatforms(json_data, yearMin, yearMax):
         # finds unique publishers taking advantage of the set data structure
         # Constructor
         platform_set = set((""))
 
-        for json_object in json_data:
-            platform_set.add(json_object.platform)
+        for platform in json_data:
+            if type(platform.year) != type(None) and platform.platform != type(None) and platform != type(None):
+                if yearMin <= platform.year <= yearMax:
+                    platform_set.add(platform.platform)
+                else:
+                    pass
+            else:
+                pass
 
         unique_platforms = len(platform_set)
         return unique_platforms
