@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, redirect, flash, render_template, url
 from datatracker.platformData import platformData as pfd
 from datatracker.api import api
 from datatracker.search import search as srch
+from datatracker.salesData import salesData as sds
 import json
 
 bp = Blueprint('sample', __name__)
@@ -39,6 +40,12 @@ def index():  # Index.html
     copiesPer = pfd.copiesPer_Dict(game_Data)
     return render_template('/sample/index.html', copiesPer=copiesPer)
 
+@bp.route('/sales')  # URL Route
+def index():  # Index.html
+
+    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
+    salesPer = sds.salesPer_Global(game_Data, 2013, 2020)
+    return render_template('/sample/sales.html', salesPer=salesPer)
 
 
 @bp.route('/')  # URL Route

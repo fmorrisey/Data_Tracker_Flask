@@ -36,11 +36,13 @@ class platformData(object):
         # finds unique publishers taking advantage of the set data structure
         # Constructor
         platform_set = set((""))
+        platformdict = {}
 
         for platform in json_data:
             if type(platform.year) != type(None) and platform.platform != type(None) and platform != type(None):
                 if yearMin <= platform.year <= yearMax:
                     platform_set.add(platform.platform)
+
                 else:
                     pass
             else:
@@ -60,41 +62,3 @@ class platformData(object):
         print(titles)
         return names, titles
 
-    def _groupManufactures(publishers, year):  # Groups consoles by manufacturer
-        Nintendo = []
-        Sony = []
-        Microsoft = []
-        Atari = []
-        Sega = []
-        PerComp = []
-        Other = []
-
-        for publisher in publishers:
-            if type(publisher.year) != type(None):
-                if publisher.year >= year:
-                    if (publisher.platform == 'NES') or (publisher.platform == 'GC') or (
-                            publisher.platform == 'SNES') or (publisher.platform == 'GBA') or (
-                            publisher.platform == 'GB') or (publisher.platform == 'Wii') or (
-                            publisher.platform == 'WiiU') or (publisher.platform == 'DS') or (
-                            publisher.platform == '3DS') or (publisher.platform == 'N64'):
-                        Nintendo.append(publisher)
-                    else:
-                        Other.append(publisher)
-                    """
-                    elif (publisher.platform == 'XB') or (publisher.platform == 'XOne') or (publisher.platform == 'X360'):
-                        Microsoft.append(publisher)
-                    elif (publisher.platform == 'PS') or (publisher.platform == 'PS2') or (publisher.platform == 'PS3') or (publisher.platform == 'PSP') or (publisher.platform == 'PS4') or (publisher.platform == 'PSV') or (publisher.platform == 'PSV'):
-                        Sony.append(publisher)
-                    elif (publisher.platform == 'SAT') or (publisher.platform == 'GEN'):
-                        Sega.append(publisher)
-                    elif (publisher.platform == '2600'):
-                        Atari.append(publisher)
-                    elif (publisher.platform == 'PC'):
-                        PerComp.append(publisher)
-                    """
-                else:
-                    pass
-            else:
-                pass
-
-        return Nintendo  # , Sony, Atari, Microsoft, Atari, Sega, PerComp, Other

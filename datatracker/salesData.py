@@ -1,53 +1,41 @@
-from types import SimpleNamespace
-
-from collections import Counter as ct
-import collections as col
-
-from requests import NullHandler
-
-#names , titles = platformData.copiesPerPlatform(gameData)
-
 class salesData(object):
     def __init__(self, game_data):
         self.game_data = game_data
 
-    def byConsolePerDecade(game_data):
-        #years = salesData.decades(game_data)
-        dec1980 = salesData.decadesGrouping(game_data)
-        pass
+    def salesPer_Global(game_data, yearMin, yearMax):
+        platforms = salesData._findUniquePlatforms(game_data)
+        platforms_dict = salesData._createPlatformDict(platforms)
+        globalSalesRAW = salesData._salesGlobal(game_data, platforms_dict, yearMin, yearMax)
+        globalSales = salesData._dictionaryCleaner(globalSalesRAW)
+        return globalSales
 
-        return dec1980
+    def _salesGlobal(game_data, platforms_dict, yearMin, yearMax):
+        for game in game_data:
+            if type(game.year) != type(None):
+                if yearMin <= game.year <= yearMax:
+                    platforms_dict[f"{game.platform}"] += game.globalSales
+            else:
+                pass
+        return platforms_dict
 
-    def decades(json_data):
-        _decades_set = set((""))
+    def _findUniquePlatforms(game_data):
+        platforms = {game.platform for game in game_data}
+        return platforms
 
-        for json_object in json_data:
-            _decades_set.add(json_object['year'])
+    def _createPlatformDict(platforms):  # ReturnsDict
+        platforms_dict = {}
+        for platform in platforms:
+            platforms_dict[f'{platform}'] = 0
+        return platforms_dict
 
-        print(_decades_set)
-        return _decades_set
+    def _dictionaryCleaner(dictionary):
+        nullEntries = []
+        for entry in dictionary:
+            if (dictionary[entry] == 0
+                    or dictionary[entry] == type(None)):
+                nullEntries.append(entry)
 
-    def groupByDecade(json_data):
-        dec1980 = {}
-        other = {}
-         
-        for json_object in json_data:
-            if type(json_object.year) != type(None):
-                if json_object.year >= 1990:
-                    dec1980 = json_object
-                               
-                           
-            """                
-            elif 1990 <= json_object.year <= 1999:
-                dec1990.update(json_object)
-            elif 2000 <= json_object.year <= 2009:
-                dec1990.update(json_object)
-            elif 2010 <= json_object.year <= 2019:
-                dec1990.update(json_object)
-            elif 2020 <= json_object.year <= 2021:
-                dec1990.update(json_object)
-        return dec1980 , dec1990, dec2000, dec2010, dec2020, na
-            """
-        return dec1980
-            
-   
+        for entry in nullEntries:
+            del dictionary[entry]
+
+        return dictionary
