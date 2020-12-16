@@ -37,21 +37,16 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Date Stamp</th>
-        <th>Title</th>
-        <th>Publish Date</th>
-        <th>Tags</th>
+        <th>Game</th>
       </tr>
     </thead>
-
-{% for game in res %}
+    {% for game in res %}
     <tbody>
       <tr>
-        <th scope="row"></th>
           <td><a href="{{ url_for('.details', game_id=game._id) }}">{{game.name}}</a></td>
       </tr>
     </tbody>
-{% endfor %}
+    {% endfor %}
   </table>
 
         <footer class="footer" style="text-align: center;">
