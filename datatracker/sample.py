@@ -22,7 +22,7 @@ def search_requests():
     results, hits = srch.searchByName(game_Data, search_term)
     #userResults = json.dumps(results)
     #session['userResults'] = userResults
-    return render_template('sample/results.html', res=results, hits=hits, num=1)
+    return render_template('sample/results.html', res=results, hits=hits)
 
 
 @bp.route('/search/details/<game_id>', methods=['GET'])
