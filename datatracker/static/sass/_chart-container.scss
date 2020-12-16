@@ -10,15 +10,25 @@
 
 }
 
-svg{
-    
-   enable-background: new 0 0 512 512;
+.svgstyling{
+
     fill: #d3d30d;
     position: absolute;
-    width: 125%;
-    /* font-size: 86rem; */
+    width: 96%;
     height: auto;
-    top: -15%;
-    left: -5rem;
-    filter: drop-shadow(2px 4px 6px black);
+    top: -13%;
+    left: -3rem;
+    filter: drop-shadow(2px 4px 6px black);;
+}
+
+
+svg{
+    width: 125%;
+    height: auto;
+}
+
+.chartstyling{
+    position: absolute;
+    top: -3rem;
+    width: 100%;
 }
