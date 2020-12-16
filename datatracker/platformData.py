@@ -13,15 +13,13 @@ class platformData(object):
     def copiesPer_Dict(game_data):  # Calls multiple functions to return two serpate lists of copies per console
         numberOfPlatforms = platformData._findUnique(game_data)
         platforms = platformData._titlesPer(game_data)
-        topPlatforms = platformData._top_Platforms(platforms,
-                                                   numberOfPlatforms)  # Sorts the data by top platform descending order
+        topPlatforms = platformData._top_Platforms(platforms, numberOfPlatforms)  # Sorts the data by top platform descending order
         return topPlatforms  # Returns Dict
 
     def copiesPer_Lists(game_data):  # Calls multiple functions to return two serpate lists of copies per console
         numberOfPlatforms = platformData._findUnique(game_data)
         platforms = platformData._titlesPer(game_data)
-        topPlatforms = platformData._top_Platforms(platforms,
-                                                   numberOfPlatforms)  # Sorts the data by top platform descending order
+        topPlatforms = platformData._top_Platforms(platforms, numberOfPlatforms)  # Sorts the data by top platform descending order
         platform_names, platform_titles_count = platformData._zip_Platforms(topPlatforms)
         return platform_names, platform_titles_count  # Return Lists
 
@@ -55,7 +53,6 @@ class platformData(object):
         print(names)
         print(titles)
         return names, titles
-
 
     def _groupManufactures(publishers, year):  # Groups consoles by manufacturer
         Nintendo = []

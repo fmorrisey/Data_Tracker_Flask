@@ -4,35 +4,32 @@ from datatracker.api import api
 from datatracker.search import search as srch
 import json
 
-
-
 bp = Blueprint('sample', __name__)
 
+#APIRequests_for data
+game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
 results = []
 
-
-@bp.route('/search', methods=['GET'])
+@bp.route('/sample/search', methods=['GET'])
 def search():
-    return render_template('sample/search.html')
+    return render_template('/sample/search.html')
 
 
-@bp.route('/search/results', methods=['GET', 'POST'])
+@bp.route('/sample/results', methods=['GET', 'POST'])
 def search_requests():
     search_term = request.form["input"]
-    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     results, hits = srch.searchByName(game_Data, search_term)
     #userResults = json.dumps(results)
     #session['userResults'] = userResults
-    return render_template('sample/results.html', res=results, hits=hits)
+    return render_template('/sample/results.html', res=results, hits=hits)
 
 
-@bp.route('/search/details/<game_id>', methods=['GET'])
+@bp.route('/sample/details/<game_id>', methods=['GET'])
 def details(game_id):
     #userResults = session.get('userResults', None)
-    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     gameInfo = srch.searchByID(game_Data, game_id)
 
-    return render_template('sample/details.html', gameInfo=gameInfo)
+    return render_template('/sample/details.html', gameInfo=gameInfo)
 
 
 @bp.route('/sample')  # URL Route
