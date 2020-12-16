@@ -12,7 +12,7 @@
                 <p>Which console do you think rules all platforms?</p>
                 <p>Many joined this royal rumble, but only one came out on top!</p>
                 <p>Did you see that?</p>
-                <p>It might be small, but the DS packs one hell of punch when it comes to game sales...</p>
+                <p>It might be small, but the DS packs one hell of punch when it comes to releasing games...</p>
 
                 <a href="{{ url_for('sample.search') }}"> Search for Games </a>
             </div>
@@ -32,7 +32,7 @@
                         data: {
                             labels: [{% for key in copiesPer.keys() %}, "{{key}}" {% endfor %}],
                             datasets: [{
-                                label: 'Top Console Sales since 2013',
+                                label: 'Top Console (Number of releases)',
                                 data: [{% for value in copiesPer.values() %}, "{{value}}" {% endfor %}],
                                 backgroundColor: [
                                     '#1DBDE6',
