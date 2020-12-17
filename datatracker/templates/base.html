@@ -13,8 +13,7 @@
 
     <!--CUSTOM CSS-->
     <link rel="stylesheet" href="../../static/css/style.css">
-   
-    
+
     <!--CHART.JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
             integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
@@ -59,13 +58,15 @@
         <main>
             <!--PAC MAN BECOMES A JINJA BLOCK-->
             <div class="container">
-                <div class="card">
+                <div class="col-12">
+                    <div class="card">
                     <div class ="chart-container">
                         {% block chart%}{% endblock chart %}
                     </div>
                     <div class="content">
                         {% block content %}{% endblock content %}
                     </div>
+                </div>
                 </div>
             </div>
         </main> 
