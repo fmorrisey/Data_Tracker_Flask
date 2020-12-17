@@ -26,9 +26,6 @@ def index():  # Index.html
 @bp.route('/sample/sales')  # URL Route
 def sales():  # Index.html
 
-<<<<<<< HEAD
-    return render_template('/sample/sales.html', salesPer=salesPer)
-=======
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     salesPer = sds.salesPer_Global(game_Data, 2013, 2020)
 
@@ -40,7 +37,6 @@ def sales():  # Index.html
         value_list.append(v)
 
     return render_template('/sample/sales.html', salesPer=salesPer, key_list=key_list, value_list=value_list)
->>>>>>> new-branch
 
 @bp.route('/analysis')  # URL Route
 def analysis():  # analysis.html

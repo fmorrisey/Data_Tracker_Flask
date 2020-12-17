@@ -9,21 +9,11 @@
     <div class="col-12">
         <div class="row">
             <div class="col-md-6">
-<<<<<<< HEAD
-                <p>Which console do you think rules all platforms?</p>
-                <p>Many joined this royal rumble, but only one came out on top!</p>
-                <p>To the right you will see a graph depicting the amount of games that was released per platform in 20XX. </p>
-                <p>Did you see that?</p>
-                <p>It might be small, but the DS packs one hell of punch when it comes to releasing games...</p>
-
-                <a href="{{ url_for('sample.home') }}"> Search for Games </a>
-=======
                 <p>How many games did you think your favorite console sold before looking at the graph above?</p>
                 <p>Were they above or below your expectations? </p>
                 <p>If they were below...What would you recommend to them to bring sales up?</p>
                 <br>
-                <a href="{{ url_for('sample.search') }}"> Search for Games </a>
->>>>>>> new-branch
+                <a href="{{ url_for('sample.home') }}"> Search for Games </a>
             </div>
         </div>
     </div>
@@ -38,11 +28,9 @@
                     var myChart = new Chart(ctx, {
                         type: 'doughnut',
                         data: {
-<<<<<<< HEAD
+
                             labels: [{% for key in salesPer %}, '{{key}}' {% endfor %}],
-=======
                             labels: ['{{ key_list[0] }}', '{{ key_list[1] }}', '{{ key_list[2] }}', '{{ key_list[3] }}', '{{ key_list[4] }}', '{{ key_list[5] }}', '{{ key_list[6] }}', '{{ key_list[7] }}', '{{ key_list[8] }}', '{{ key_list[9] }}'],
->>>>>>> new-branch
                             datasets: [{
                                 data: ['{{ value_list[0] }}', '{{ value_list[1] }}', '{{ value_list[2] }}', '{{ value_list[3] }}', '{{ value_list[4] }}', '{{ value_list[5] }}', '{{ value_list[6] }}', '{{ value_list[7] }}', '{{ value_list[8] }}', '{{ value_list[9] }}'],
                                 backgroundColor: [
