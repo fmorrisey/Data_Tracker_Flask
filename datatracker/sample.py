@@ -30,7 +30,14 @@ def sales():  # Index.html
     game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
     salesPer = sds.salesPer_Global(game_Data, 2013, 2020)
 
-    return render_template('/sample/sales.html', salesPer=salesPer)
+    key_list = []
+    value_list = []
+
+    for k, v in salesPer.items():
+        key_list.append(k)
+        value_list.append(v)
+
+    return render_template('/sample/sales.html', salesPer=salesPer, key_list=key_list, value_list=value_list)
 
 @bp.route('/')  # URL Route
 def analysis():  # Index.html

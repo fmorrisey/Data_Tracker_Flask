@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1 style="text-align: center">{% block title %} Which console is King?{% endblock %}</h1>
+<h1 style="text-align: center">{% block title %} Money &#128176; Talks (Sales Per Console) {% endblock %}</h1>
 {% endblock header %}
 
 {% block content %}
@@ -9,12 +9,10 @@
     <div class="col-12">
         <div class="row">
             <div class="col-md-6">
-                <p>Which console do you think rules all platforms?</p>
-                <p>Many joined this royal rumble, but only one came out on top!</p>
-                <p>To the right you will see a graph depicting the amount of games that was released per platform in 20XX. </p>
-                <p>Did you see that?</p>
-                <p>It might be small, but the DS packs one hell of punch when it comes to releasing games...</p>
-
+                <p>How many games did you think your favorite console sold before looking at the graph above?</p>
+                <p>Were they above or below your expectations? </p>
+                <p>If they were below...What would you recommend to them to bring sales up?</p>
+                <br>
                 <a href="{{ url_for('sample.search') }}"> Search for Games </a>
             </div>
         </div>
@@ -28,126 +26,42 @@
                     <script>
                     var ctx = document.getElementById('myChart').getContext('2d');
                     var myChart = new Chart(ctx, {
-                        type: 'bar',
+                        type: 'doughnut',
                         data: {
-                            labels: [{% for key in salesPer.keys() %}, "{{key}}" {% endfor %}],
+                            labels: ['{{ key_list[0] }}', '{{ key_list[1] }}', '{{ key_list[2] }}', '{{ key_list[3] }}', '{{ key_list[4] }}', '{{ key_list[5] }}', '{{ key_list[6] }}', '{{ key_list[7] }}', '{{ key_list[8] }}', '{{ key_list[9] }}'],
                             datasets: [{
-                                label: 'Top Console Publishers since 2013',
-                                data: [{% for value in salesPer.values() %}, "{{value}}" {% endfor %}],
+                                data: ['{{ value_list[0] }}', '{{ value_list[1] }}', '{{ value_list[2] }}', '{{ value_list[3] }}', '{{ value_list[4] }}', '{{ value_list[5] }}', '{{ value_list[6] }}', '{{ value_list[7] }}', '{{ value_list[8] }}', '{{ value_list[9] }}'],
                                 backgroundColor: [
-                                    '#0D7225',
-                                    '#F10416',
-                                    '#7AE645',
-                                    '#6201CB',
-                                    '#BA3591',
-                                    '#2C2DC8',
-                                    '#98C98E',
-                                    '#0A2270',
-                                    '#D0C26C',
-                                    '#665FB0',
-                                    '#7748C8',
-                                    '#B5243A',
-                                    '#28C0EC',
-                                    '#A9B71B',
-                                    '#A4A8CF',
-                                    '#AD9ED3',
-                                    '#A0C374',
-                                    '#BD9342',
-                                    '#84431B',
-                                    '#5B22CC',
-                                    '#4BB119',
-                                    '#E7F0DB',
-                                    '#533E26',
-                                    '#382860',
-                                    '#2CE64F',
-                                    '#FA5943',
-                                    '#85FF4E',
-                                    '#3D30C3',
-                                    '#B35B04',
-                                    '#9DE783',
-                                    '#409F9E',
-                                    '#B8E851',
-                                    '#C6F6E9',
-                                    '#41BF67',
-                                    '#1B2FB4',
-                                    '#9683BD',
-                                    '#E2A583',
-                                    '#EA7B9E',
-                                    '#EBF006',
-                                    '#141B97',
-                                    '#36B3F3',
-                                    '#8FAFDB',
-                                    '#DEBDBA',
-                                    '#1E7B2D',
-                                    '#CFFDFF',
-                                    '#C3DDEA',
-                                    '#9B1821',
-                                    '#65761A',
-                                    '#28DF90',
-                                    '#C5EB23'
+                                    '#F94144',
+                                    '#F3722C',
+                                    '#F8961E',
+                                    '#F9844A',
+                                    '#F9C74F',
+                                    '#90BE6D',
+                                    '#43AA8B',
+                                    '#4D908E',
+                                    '#577590',
+                                    '#277DA1'
                                 ],
                                 borderColor: [
-                                    '#0D7225',
-                                    '#F10416',
-                                    '#7AE645',
-                                    '#6201CB',
-                                    '#BA3591',
-                                    '#2C2DC8',
-                                    '#98C98E',
-                                    '#0A2270',
-                                    '#D0C26C',
-                                    '#665FB0',
-                                    '#7748C8',
-                                    '#B5243A',
-                                    '#28C0EC',
-                                    '#A9B71B',
-                                    '#A4A8CF',
-                                    '#AD9ED3',
-                                    '#A0C374',
-                                    '#BD9342',
-                                    '#84431B',
-                                    '#5B22CC',
-                                    '#4BB119',
-                                    '#E7F0DB',
-                                    '#533E26',
-                                    '#382860',
-                                    '#2CE64F',
-                                    '#FA5943',
-                                    '#85FF4E',
-                                    '#3D30C3',
-                                    '#B35B04',
-                                    '#9DE783',
-                                    '#409F9E',
-                                    '#B8E851',
-                                    '#C6F6E9',
-                                    '#41BF67',
-                                    '#1B2FB4',
-                                    '#9683BD',
-                                    '#E2A583',
-                                    '#EA7B9E',
-                                    '#EBF006',
-                                    '#141B97',
-                                    '#36B3F3',
-                                    '#8FAFDB',
-                                    '#DEBDBA',
-                                    '#1E7B2D',
-                                    '#CFFDFF',
-                                    '#C3DDEA',
-                                    '#9B1821',
-                                    '#65761A',
-                                    '#28DF90',
-                                    '#C5EB23'
+                                    '#F94144',
+                                    '#F3722C',
+                                    '#F8961E',
+                                    '#F9844A',
+                                    '#F9C74F',
+                                    '#90BE6D',
+                                    '#43AA8B',
+                                    '#4D908E',
+                                    '#577590',
+                                    '#277DA1'
                                 ],
                                 borderWidth: 1
                             }]
                         },
                         options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
+                            cutoutPercentage: 20,
+                            legend: {
+                                position: 'bottom'
                             }
                         }
                     });
