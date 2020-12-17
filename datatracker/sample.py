@@ -9,7 +9,9 @@ bp = Blueprint('sample', __name__)
 
 #APIRequests_for data
 game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
-results = []
+copiesPer = pfd.copiesPer_Dict(game_Data)
+salesPer = sds.salesPer_Global(game_Data, 2013, 2020)
+
 
 @bp.route('/')  # URL Route
 def home():  # Index.html
@@ -19,30 +21,23 @@ def home():  # Index.html
 @bp.route('/sample')  # URL Route
 def index():  # Index.html
 
-    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
-    copiesPer = pfd.copiesPer_Dict(game_Data)
-
     return render_template('/sample/index.html', copiesPer=copiesPer)
 
 @bp.route('/sample/sales')  # URL Route
 def sales():  # Index.html
 
-    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
-    salesPer = sds.salesPer_Global(game_Data, 2013, 2020)
-
     return render_template('/sample/sales.html', salesPer=salesPer)
 
-@bp.route('/')  # URL Route
-def analysis():  # Index.html
+@bp.route('/analysis')  # URL Route
+def analysis():  # analysis.html
 
     return render_template('/sample/analysis.html')
 
-
-
+"""
 @bp.route('/sample/search', methods=['GET'])
 def search():
     return render_template('/sample/search.html')
-
+"""
 
 @bp.route('/sample/results', methods=['GET', 'POST'])
 def search_requests():
