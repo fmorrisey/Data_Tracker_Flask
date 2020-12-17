@@ -1,26 +1,8 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1 style="text-align: center">{% block title %} Which console is King?{% endblock %}</h1>
+<h1 style="text-align: center">{% block title %} Global Sales{% endblock %}</h1>
 {% endblock header %}
-
-{% block content %}
-<div class="container">
-    <div class="col-12">
-        <div class="row">
-            <div class="col-md-6">
-                <p>Which console do you think rules all platforms?</p>
-                <p>Many joined this royal rumble, but only one came out on top!</p>
-                <p>To the right you will see a graph depicting the amount of games that was released per platform in 20XX. </p>
-                <p>Did you see that?</p>
-                <p>It might be small, but the DS packs one hell of punch when it comes to releasing games...</p>
-
-                <a href="{{ url_for('sample.home') }}"> Search for Games </a>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock content %}
 
 {% block chart %}
             <div class="col-md-6">
@@ -52,39 +34,7 @@
                                     '#A4A8CF',
                                     '#AD9ED3',
                                     '#A0C374',
-                                    '#BD9342',
-                                    '#84431B',
-                                    '#5B22CC',
-                                    '#4BB119',
-                                    '#E7F0DB',
-                                    '#533E26',
-                                    '#382860',
-                                    '#2CE64F',
-                                    '#FA5943',
-                                    '#85FF4E',
-                                    '#3D30C3',
-                                    '#B35B04',
-                                    '#9DE783',
-                                    '#409F9E',
-                                    '#B8E851',
-                                    '#C6F6E9',
-                                    '#41BF67',
-                                    '#1B2FB4',
-                                    '#9683BD',
-                                    '#E2A583',
-                                    '#EA7B9E',
-                                    '#EBF006',
-                                    '#141B97',
-                                    '#36B3F3',
-                                    '#8FAFDB',
-                                    '#DEBDBA',
-                                    '#1E7B2D',
-                                    '#CFFDFF',
-                                    '#C3DDEA',
-                                    '#9B1821',
-                                    '#65761A',
-                                    '#28DF90',
-                                    '#C5EB23'
+
                                 ],
                                 borderColor: [
                                     '#0D7225',
@@ -154,6 +104,31 @@
                     </script>
             </div>
 {% endblock chart %}
+
+
+
+{% block content %}
+  <div class="input-container">
+      <form action="/sample/results" method="post">
+        <div class="input-group">
+          <input type="text" class="form-control input-lg" name="input" placeholder="Search" style="height: 50px;" autofocus />
+          <div class="input-group-btn">
+            <button class="btn btn-primary btn-lg" type="submit">
+
+            </button>
+          </div>
+        </div>
+      </form>
+
+    <p>Which console do you think rules all platforms?</p>
+    <p>Many joined this royal rumble, but only one came out on top!</p>
+    <p>Did you see that?</p>
+    <p>It might be small, but the DS packs one hell of punch when it comes to releasing games...</p>
+    <a href="{{ url_for('sample.home') }}"> Search for Games </a>
+</div>
+{% endblock content %}
+
+
 
 
 

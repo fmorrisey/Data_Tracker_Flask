@@ -5,20 +5,28 @@
 {% endblock header %}
 
 {% block content %}
-<div class="container">
-    <div class="col-12">
-        <div class="row">
-            <div class="col-md-6">
-                <p>Which console do you think rules all platforms?</p>
-                <p>Many joined this royal rumble, but only one came out on top!</p>
-                <p>Did you see that?</p>
-                <p>It might be small, but the DS packs one hell of punch when it comes to releasing games...</p>
-
-                <a href="{{ url_for('sample.home') }}"> Search for Games </a>
-            </div>
+ <div class="input-container">
+      <form action="/search/results" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control input-lg" name="input" placeholder="Search" autofocus>
+        <div class="input-group-btn">
+          <button class="btn btn-primary btn-lg" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+              </svg>
+          </button>
         </div>
-    </div>
+      </div>
+    </form>
+
+    <p>Which console do you think rules all platforms?</p>
+    <p>Many joined this royal rumble, but only one came out on top!</p>
+    <p>Did you see that?</p>
+    <p>It might be small, but the DS packs one hell of punch when it comes to releasing games...</p>
+    <a href="{{ url_for('sample.home') }}"> Search for Games </a>
 </div>
+
 {% endblock content %}
 
 {% block chart %}

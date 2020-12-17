@@ -21,21 +21,9 @@
                 datasets: [{
                     label: 'Top Console Publishers',
                     data: [{{ game.naSales }}, {{ game.euSales }}, {{ game.jpSales}}, {{ game.otherSales }}],
-                    backgroundColor: [
-                      '#e9c46a',
-                      '#2a9d8f',
-                      '#264653',
-                      '#f4a261',
-                      '#e76f51'
-                    ],
-                    borderColor: [
-                      '#e9c46a',
-                      '#2a9d8f',
-                      '#264653',
-                      '#f4a261',
-                      '#e76f51'
-                    ],
-                    borderWidth: 1
+                    backgroundColor: ['rgba({{range(1, 255)|random}},{{range(1, 255)|random}},{{range(1, 255)|random}})'],
+                    borderColor: ['rgba({{range(1, 255)|random}},{{range(1, 255)|random}},{{range(1, 255)|random}})'],
+                    borderWidth: 2
                 }]
             },
             options: {
