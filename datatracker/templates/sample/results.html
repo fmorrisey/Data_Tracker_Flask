@@ -30,12 +30,13 @@
       {% if hits == 0 %}
         <p>Nothing here buddy</p>
       {% else %}
-          {% for game in res %}
+
         <thead>
       <tr>
         <th>Game</th>
       </tr>
     </thead>
+      {% for game in res %}
             <tbody class="WE NEED A CLASS FOR CENTERING">
               <tr>
                   <td><a href="{{ url_for('.details', game_id=game._id) }}">{{game.name}}</a></td>
