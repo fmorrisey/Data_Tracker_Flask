@@ -19,20 +19,21 @@
             integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
             crossorigin="anonymous"></script>
     </head>
-    <header class="header"
+    <header class="header">
+
     <div id="navigation-bar">
         <nav>
-        <ul>
-          <li class="nav-button"> <a href="{{ url_for('sample.home') }}">Home</a></li>
-          <li class="nav-button"> <a href="{{ url_for('sample.sales') }}">Sales</a></li>
-          <li class="nav-button"> <a href="{{ url_for('sample.index') }}">Sales</a></li>
-          <li class="nav-button"> <a href="{{ url_for('sample.analysis') }}">Sales</a></li>
-        </ul>
+            <ul>
+              <li class="nav-button box"> <a href="{{ url_for('sample.home') }}">Home</a></li>
+              <li class="nav-button"> <a href="{{ url_for('sample.sales') }}">Sales</a></li>
+              <li class="nav-button"> <a href="{{ url_for('sample.index') }}">Copies Sold</li>
+              <li class="nav-button"> <a href="{{ url_for('sample.analysis') }}">Analysis</a></li>
+            </ul>
         </nav>
     </div>
-    <div>
+      <div class="navigation-bar">
         {% block header %}{% endblock header  %}
-    </div>
+        </div>
     </header>
 
     <body>

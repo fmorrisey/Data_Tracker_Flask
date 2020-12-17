@@ -6,11 +6,17 @@ from datatracker.salesData import salesData as sds
 import json
 
 bp = Blueprint('sample', __name__)
-
+#Global
 #APIRequests_for data
 game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
 copiesPer = pfd.copiesPer_Dict(game_Data)
+salesPer = sds.salesPer_Global(game_Data, 2013, 2020)
+key_list = []
+value_list = []
 
+for k, v in salesPer.items():
+    key_list.append(k)
+    value_list.append(v)
 
 
 @bp.route('/')  # URL Route
@@ -26,15 +32,6 @@ def index():  # Index.html
 @bp.route('/sample/sales')  # URL Route
 def sales():  # Index.html
 
-    game_Data = api.requests_NameSpace("https://api.dccresource.com/api/games")
-    salesPer = sds.salesPer_Global(game_Data, 2013, 2020)
-
-    key_list = []
-    value_list = []
-
-    for k, v in salesPer.items():
-        key_list.append(k)
-        value_list.append(v)
 
     return render_template('/sample/sales.html', salesPer=salesPer, key_list=key_list, value_list=value_list)
 
@@ -54,7 +51,7 @@ def search_requests():
     search_term = request.form["input"]
     results, hits = srch.searchByName(game_Data, search_term)
 
-    return render_template('/sample/results.html', res=results, hits=hits)
+    return render_template('/sample/results.html', res=results, hits=hits, search_term=search_term)
 
 
 @bp.route('/sample/details/<game_id>', methods=['GET'])
